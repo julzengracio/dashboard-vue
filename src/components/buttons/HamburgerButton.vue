@@ -9,15 +9,17 @@
 <script>
 export default {
   name: "HamburgerButton",
-  data: function() {
+  data: function(){
     return {
-      toggled: false
-    };
+      toogle: this.toggled
+    }
+  },
+  props: {
+    toggled: Boolean,
   },
   methods: {
     toggle: function() {
       this.$emit("toggle");
-      this.toggled = !this.toggled ? true : false;
     }
   }
 };
@@ -27,10 +29,10 @@ export default {
 .sidebar-toggler .bar1,
 .bar2,
 .bar3 {
-  width: 30px;
-  height: 3px;
+  width: 20px;
+  height: 2px;
   background-color: black;
-  margin: 6px 0;
+  margin: 5px 0;
   transition: 0.4s;
 }
 .sidebar-toggler {
@@ -41,14 +43,14 @@ export default {
   box-shadow: none;
 }
 .change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-6px, 6px);
-  transform: rotate(-45deg) translate(-6px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-5px, -5px);
+  transform: rotate(-45deg) translate(-5px, 5px);
 }
 .change .bar2 {
   opacity: 0;
 }
 .change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-6px, -7px);
-  transform: rotate(45deg) translate(-6px, -7px);
+  -webkit-transform: rotate(45deg) translate(-5px, -5px);
+  transform: rotate(45deg) translate(-5px, -5px);
 }
 </style>

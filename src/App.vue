@@ -1,18 +1,44 @@
 <template>
   <div id="app">
-    <Sidebar :toggled="toggled" />
+    <Sidebar :toggled="toggled" @toggle="toggleSidebar" />
     <div id="main" :class="{ toggled: toggled }">
-      <ul class="nav bg-light">
-        <li class="nav-item">
-          <Toggler @toggle="toggleSidebar" />
+      <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="container-fluid">
+          <Toggler :toggled="toggled" @toggle="toggleSidebar" />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/">Dashboard</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/">Users</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- <ul class="nav bg-light">
+        <li class="nav-item mt-auto">
+          <Toggler :toggled="toggled" @toggle="toggleSidebar" />
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/">Dashboard</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Users</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="container-fluid mt-3">
         <router-view />
       </div>
@@ -28,7 +54,7 @@ export default {
   name: "App",
   data: function() {
     return {
-      toggled: false,
+      toggled: true,
     };
   },
   components: {

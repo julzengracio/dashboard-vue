@@ -6,7 +6,7 @@
   >
     <nav v-show="toggled">
       <header class="sidebar-brand">
-        <span>Dashboard</span>
+        <span><i class="bi bi-bootstrap"></i>&nbsp;Dashboard</span>
       </header>
       <div>
         <span class="nav-group-title">Theme</span>
@@ -29,10 +29,14 @@
         <span class="nav-group-title">Components</span>
         <ul class="nav-group">
           <li class="nav-item">
-            <button class="dropdown-button" :class="dropdownBtnClass" type="button">
+            <button
+              class="dropdown-button"
+              :class="dropdownBtnClass"
+              type="button"
+            >
               <div>
                 <i class="bi bi-card-checklist"></i>
-                Forms 
+                Forms
               </div>
               <i class="bi bi-caret-down-fill"></i>
             </button>
@@ -43,10 +47,14 @@
             </div>
           </li>
           <li class="nav-item">
-            <button class="dropdown-button" :class="dropdownBtnClass" type="button">
+            <button
+              class="dropdown-button"
+              :class="dropdownBtnClass"
+              type="button"
+            >
               <div>
                 <i class="bi bi-card-checklist"></i>
-                Buttons 
+                Buttons
               </div>
               <i class="bi bi-caret-down-fill"></i>
             </button>
@@ -82,8 +90,10 @@
         </ul>
       </div>
     </nav>
-    <div v-if="toggled" class="d-grid gap-2">
-      <button type="button" class="btn btn-primary col">Close</button>
+    <div v-if="toggled" class="d-grid gap-2" id="closeBtn">
+      <button type="button" class="btn btn-primary col" @click="toggleSidebar">
+        Close
+      </button>
     </div>
   </aside>
 </template>
@@ -91,10 +101,11 @@
 <script>
 export default {
   name: "Sidebar",
-  data: function(){
+  data: function() {
     return {
-      dropdownBtnClass: "d-flex justify-content-between"
-    }
+      toggle: this.toggled,
+      dropdownBtnClass: "d-flex justify-content-between",
+    };
   },
   props: {
     toggled: Boolean,
@@ -112,6 +123,11 @@ export default {
         }
       });
     }
+  },
+  methods: {
+    toggleSidebar: function() {
+      this.$emit("toggle");
+    },
   },
 };
 </script>
@@ -189,5 +205,11 @@ export default {
 }
 .dropdown-container a {
   margin-left: 31px;
+}
+
+@media screen and (min-width: 768px) {
+  #closeBtn {
+    visibility: hidden;
+  }
 }
 </style>
