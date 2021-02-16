@@ -1,32 +1,69 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <Sidebar :toggled="toggled" />
+    <div id="main" :class="{ toggled: toggled }">
+      <ul class="nav bg-light">
+        <li class="nav-item">
+          <Toggler @toggle="toggleSidebar" />
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/">Dashboard</router-link>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <div class="container-fluid mt-3">
+        <router-view />
+      </div>
     </div>
-    <router-view />
   </div>
 </template>
 
+<script>
+import sidebar from "./components/sidebar/Sidebar";
+import hamburgerButton from "./components/buttons/HamburgerButton";
+
+export default {
+  name: "App",
+  data: function() {
+    return {
+      toggled: false,
+    };
+  },
+  components: {
+    Sidebar: sidebar,
+    Toggler: hamburgerButton,
+  },
+  methods: {
+    toggleSidebar: function() {
+      this.toggled = !this.toggled ? true : false;
+    },
+  },
+};
+</script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"); /* Google Font */
+@import "~bootstrap/dist/css/bootstrap.min.css"; /* Bootstrap */
+
+body {
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+#main {
+  transition: margin-left 0.5s;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+@media only screen and (min-width: 768px) {
+  .toggled {
+    margin-left: 250px;
+  }
 }
 </style>
