@@ -8,85 +8,42 @@
       <header class="sidebar-brand">
         <span><i class="bi bi-bootstrap"></i>&nbsp;Dashboard</span>
       </header>
-      <div>
-        <span class="nav-group-title">Theme</span>
+      <div class="mb-5">
+        <Sidebar-Header title="Theme" />
         <ul class="nav-group">
-          <li class="nav-item">
-            <a href="#">
-              <i class="bi bi-droplet"></i>
-              Colors
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="bi bi-pen"></i>
-              Typography
-            </a>
-          </li>
+          <Sidebar-Item path="/" icon="bi-droplet" name="Colors" />
+          <Sidebar-Item path="/" icon="bi-pen" name="Typography" />
         </ul>
       </div>
-      <div>
-        <span class="nav-group-title">Components</span>
+      <div class="mb-5">
+        <Sidebar-Header title="Components" />
         <ul class="nav-group">
-          <li class="nav-item">
-            <button
-              class="dropdown-button"
-              :class="dropdownBtnClass"
-              type="button"
-            >
-              <div>
-                <i class="bi bi-card-checklist"></i>
-                Forms
-              </div>
-              <i class="bi bi-caret-down-fill"></i>
-            </button>
-            <div class="dropdown-container">
-              <a href="#">Overview</a>
-              <a href="#">Select</a>
-              <a href="#">Checkboxes &amp; Radios</a>
+          <li class="nav-item pb-2">
+            <Sidebar-Dropdown target="forms" name="Forms" icon="bi-card-checklist" />
+            <div class="collapse" id="forms">
+              <Sidebar-Item path="/" name="Overview" />
+              <Sidebar-Item path="/" name="Form Control" />
+              <Sidebar-Item path="/" name="Types &amp; Layouts" />
+              <Sidebar-Item path="/" name="Validation" />
             </div>
           </li>
-          <li class="nav-item">
-            <button
-              class="dropdown-button"
-              :class="dropdownBtnClass"
-              type="button"
-            >
-              <div>
-                <i class="bi bi-card-checklist"></i>
-                Buttons
-              </div>
-              <i class="bi bi-caret-down-fill"></i>
-            </button>
-            <div class="dropdown-container">
-              <a href="#">Overview</a>
-              <a href="#">Button Colors</a>
-              <a href="#">Button Groups</a>
+          <li class="nav-item pb-2">
+            <Sidebar-Dropdown target="buttons" name="Buttons" icon="bi-menu-button" />
+            <div class="collapse" id="buttons">
+              <Sidebar-Item path="/" name="Overview" />
+              <Sidebar-Item path="/" name="Buttons" />
+              <Sidebar-Item path="/" name="Button Groups" />
+              <Sidebar-Item path="/" name="Dropdowns" />
             </div>
           </li>
         </ul>
       </div>
-      <div>
-        <span class="nav-group-title">External Links</span>
+      <div class="mb-5">
+        <Sidebar-Header title="External Links" />
         <ul class="nav-group">
-          <li class="nav-item">
-            <a href="#">
-              <i class="bi bi-facebook"></i>
-              Facebook
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="bi bi-twitter"></i>
-              Twitter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#">
-              <i class="bi bi-linkedin"></i>
-              LinkedIn
-            </a>
-          </li>
+          <Sidebar-Item path="/" icon="bi-facebook" name="Facebook" />
+          <Sidebar-Item path="/" icon="bi-twitter" name="Twitter" />
+          <Sidebar-Item path="/" icon="bi-linkedin" name="LinkedIn" />
         </ul>
       </div>
     </nav>
@@ -99,8 +56,17 @@
 </template>
 
 <script>
+import sidebarItem from "./Sidebar-Item";
+import sidebarHeader from "./Sidebar-Header";
+import sidebarDropdown from "./Sidebar-Dropdown";
+
 export default {
   name: "Sidebar",
+  components: {
+    "Sidebar-Item": sidebarItem,
+    "Sidebar-Header": sidebarHeader,
+    "Sidebar-Dropdown": sidebarDropdown
+  },
   data: function() {
     return {
       toggle: this.toggled,
@@ -109,20 +75,6 @@ export default {
   },
   props: {
     toggled: Boolean,
-  },
-  mounted: function() {
-    let dropdownBtns = document.getElementsByClassName("dropdown-button");
-    for (let i = 0; i < dropdownBtns.length; i++) {
-      dropdownBtns[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        let dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.maxHeight) {
-          dropdownContent.style.maxHeight = null;
-        } else {
-          dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
-        }
-      });
-    }
   },
   methods: {
     toggleSidebar: function() {
@@ -133,8 +85,6 @@ export default {
 </script>
 
 <style scoped>
-@import "~bootstrap-icons/font/bootstrap-icons.css";
-
 .open {
   width: 250px !important;
 }
@@ -146,18 +96,12 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #262626;
   transition: 0.5s;
   height: 100%;
   width: 0;
   z-index: 1;
-}
-.sidebar-nav a {
-  text-decoration: none;
-  display: block;
-  transition: 0.3s;
-  color: inherit;
 }
 .sidebar-brand {
   text-align: center;
@@ -165,49 +109,12 @@ export default {
   font-weight: bold;
   font-size: 1.3em;
 }
-.nav-group-title {
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-left: 15px;
-}
 .nav-group {
   list-style-type: none;
   padding: 0;
 }
-.nav-item a,
-.nav-item button {
-  padding: 5px 0 5px 15px;
-}
-.nav-item i {
-  margin-right: 10px;
-}
-.dropdown-button {
-  text-decoration: none;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  display: block;
-  outline: none;
-  padding: 0;
-  font-size: 1em;
-  font-family: inherit;
-}
-/* .dropdown-button .bi-caret-down-fill {
-  float: right;
-} */
-.dropdown-container {
-  max-height: 0;
-  overflow: hidden;
-  background-color: #262626;
-  transition: max-height 0.2s ease-out;
-}
-.dropdown-container a {
-  margin-left: 31px;
-}
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   #closeBtn {
     visibility: hidden;
   }

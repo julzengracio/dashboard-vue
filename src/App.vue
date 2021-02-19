@@ -5,19 +5,8 @@
       <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="container-fluid">
           <Toggler :toggled="toggled" @toggle="toggleSidebar" />
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <router-link class="nav-link" to="/">Dashboard</router-link>
               </li>
@@ -25,20 +14,20 @@
                 <router-link class="nav-link" to="/">Users</router-link>
               </li>
             </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#" ><i class="bi bi-bell"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" ><i class="bi bi-gear"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" ><i class="bi bi-person-circle"></i></a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
-      <!-- <ul class="nav bg-light">
-        <li class="nav-item mt-auto">
-          <Toggler :toggled="toggled" @toggle="toggleSidebar" />
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Dashboard</router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Users</a>
-        </li>
-      </ul> -->
       <div class="container-fluid mt-3">
         <router-view />
       </div>
@@ -52,17 +41,17 @@ import hamburgerButton from "./components/buttons/HamburgerButton";
 
 export default {
   name: "App",
-  data: function() {
+  data: function () {
     return {
-      toggled: true,
+      toggled: true
     };
   },
   components: {
     Sidebar: sidebar,
-    Toggler: hamburgerButton,
+    Toggler: hamburgerButton
   },
   methods: {
-    toggleSidebar: function() {
+    toggleSidebar: function () {
       this.toggled = !this.toggled ? true : false;
     },
   },
@@ -70,7 +59,6 @@ export default {
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"); /* Google Font */
-@import "~bootstrap/dist/css/bootstrap.min.css"; /* Bootstrap */
 
 body {
   margin: 0;
@@ -87,7 +75,7 @@ body {
   transition: margin-left 0.5s;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   .toggled {
     margin-left: 250px;
   }
