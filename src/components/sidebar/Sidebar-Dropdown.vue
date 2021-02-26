@@ -9,7 +9,7 @@
   >
     <div>
       <i class="bi" :class="icon"></i>
-      {{name}}
+      {{ name }}
     </div>
     <i class="bi bi-caret-down-fill"></i>
   </button>
@@ -18,7 +18,7 @@
 <script>
 export default {
   name: "Sidebar-Dropdown",
-  props: ["target", "name", "icon"],
+  props: ["target", "name", "icon"]
 };
 </script>
 

@@ -19,7 +19,11 @@
         <Sidebar-Header title="Components" />
         <ul class="nav-group">
           <li class="nav-item pb-2">
-            <Sidebar-Dropdown target="forms" name="Forms" icon="bi-card-checklist" />
+            <Sidebar-Dropdown
+              target="forms"
+              name="Forms"
+              icon="bi-card-checklist"
+            />
             <div class="collapse" id="forms">
               <Sidebar-Item path="/" name="Overview" />
               <Sidebar-Item path="/" name="Form Control" />
@@ -28,7 +32,11 @@
             </div>
           </li>
           <li class="nav-item pb-2">
-            <Sidebar-Dropdown target="buttons" name="Buttons" icon="bi-menu-button" />
+            <Sidebar-Dropdown
+              target="buttons"
+              name="Buttons"
+              icon="bi-menu-button"
+            />
             <div class="collapse" id="buttons">
               <Sidebar-Item path="/" name="Overview" />
               <Sidebar-Item path="/" name="Buttons" />
@@ -47,10 +55,15 @@
         </ul>
       </div>
     </nav>
-    <div v-if="toggled" class="d-grid gap-2" id="closeBtn">
-      <button type="button" class="btn btn-primary col" @click="toggleSidebar">
-        Close
-      </button>
+    <div
+      v-if="toggled"
+      class="justify-content-end"
+      id="closeBtn"
+      @click="toggleSidebar"
+    >
+      <div class="float-end me-3 my-2">
+        <i class="bi bi-chevron-left"></i>
+      </div>
     </div>
   </aside>
 </template>
@@ -65,7 +78,7 @@ export default {
   components: {
     "Sidebar-Item": sidebarItem,
     "Sidebar-Header": sidebarHeader,
-    "Sidebar-Dropdown": sidebarDropdown
+    "Sidebar-Dropdown": sidebarDropdown,
   },
   data: function() {
     return {
@@ -101,7 +114,7 @@ export default {
   transition: 0.5s;
   height: 100%;
   width: 0;
-  z-index: 1;
+  z-index: 9999;
 }
 .sidebar-brand {
   text-align: center;
@@ -114,9 +127,21 @@ export default {
   padding: 0;
 }
 
-@media screen and (min-width: 992px) {
+#closeBtn {
+  cursor: pointer;
+}
+#closeBtn i {
+  font-size: 1.1em;
+}
+#closeBtn:hover {
+  background-color: #333333;
+  -webkit-transition: 0.3s linear;
+  -ms-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+/* @media screen and (min-width: 992px) {
   #closeBtn {
     visibility: hidden;
   }
-}
+} */
 </style>

@@ -1,5 +1,10 @@
 <template>
-  <button type="button" class="sidebar-toggler btn btn-sm" :class="{ change: toggled }" @click="toggle">
+  <button
+    type="button"
+    class="sidebar-toggler btn btn-sm"
+    :class="{ change: toggled }"
+    @click="toggle"
+  >
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
@@ -9,13 +14,13 @@
 <script>
 export default {
   name: "HamburgerButton",
-  data: function(){
+  data: function() {
     return {
       toogle: this.toggled
-    }
+    };
   },
   props: {
-    toggled: Boolean,
+    toggled: Boolean
   },
   methods: {
     toggle: function() {
@@ -38,7 +43,7 @@ export default {
 .sidebar-toggler {
   cursor: pointer;
 }
-.sidebar-toggler:focus{
+.sidebar-toggler:focus {
   outline: none;
   box-shadow: none;
 }

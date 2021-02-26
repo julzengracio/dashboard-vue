@@ -10,7 +10,7 @@
 <script>
 export default {
   name: "Sidebar-Item",
-  props: ["path", "icon", "name"],
+  props: ["path", "icon", "name"]
 };
 </script>
 
@@ -20,9 +20,9 @@ export default {
 }
 li:hover {
   background-color: #808080;
-  -webkit-transition: .3s linear;
-  -ms-transition: .3s linear;
-  transition: .3s linear;
+  -webkit-transition: 0.3s linear;
+  -ms-transition: 0.3s linear;
+  transition: 0.3s linear;
   padding-left: 10px;
   border-radius: 3px;
 }

@@ -7,7 +7,7 @@
 <script>
 export default {
   name: "Sidebar-Header",
-  props: ["title"],
+  props: ["title"]
 };
 </script>
 
