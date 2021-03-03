@@ -172,6 +172,8 @@ export default {
         title: {
           display: true,
           text: "Vue-Chartjs",
+          responsive: true,
+          maintainAspectRatio: false
         },
       },
       dataCollection: {},

@@ -11,7 +11,7 @@
       <div class="mb-5">
         <Sidebar-Header title="Theme" />
         <ul class="nav-group">
-          <Sidebar-Item path="/" icon="bi-droplet" name="Colors" />
+          <Sidebar-Item path="/colors" icon="bi-droplet" name="Colors" />
           <Sidebar-Item path="/" icon="bi-pen" name="Typography" />
         </ul>
       </div>
