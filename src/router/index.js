@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 // Components
 import Home from "../views/Dashboard.vue";
 import Colors from "../views/Colors.vue";
+import Typography from "../views/Typography.vue"
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,11 @@ const routes = [
     path: "/colors",
     name: "Colors",
     component: Colors
+  },
+  {
+    path: "/typography",
+    name: "Typography",
+    component: Typography
   }
 ];
 

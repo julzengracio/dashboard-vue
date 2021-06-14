@@ -59,7 +59,7 @@
         <div class="col-12 col-lg">
           <div class="card">
             <div class="card-header bg-facebook">
-              <i class="bi bi-facebook" style="font-size: 4em;"></i>
+              <i class="bi bi-facebook" style="font-size: 4em"></i>
             </div>
             <div class="card-body text-center">
               <div class="row">
@@ -82,7 +82,7 @@
         <div class="col-12 col-lg">
           <div class="card">
             <div class="card-header bg-twitter">
-              <i class="bi bi-twitter" style="font-size: 4em;"></i>
+              <i class="bi bi-twitter" style="font-size: 4em"></i>
             </div>
             <div class="card-body text-center">
               <div class="row">
@@ -105,7 +105,7 @@
         <div class="col-12 col-lg">
           <div class="card">
             <div class="card-header bg-linkedin">
-              <i class="bi bi-linkedin" style="font-size: 4em;"></i>
+              <i class="bi bi-linkedin" style="font-size: 4em"></i>
             </div>
             <div class="card-body text-center">
               <div class="row">
@@ -164,7 +164,7 @@ export default {
   components: {
     LineChart,
   },
-  data: function() {
+  data: function () {
     return {
       loading: false,
       chartHeight: 100,
@@ -173,7 +173,7 @@ export default {
           display: true,
           text: "Vue-Chartjs",
           responsive: true,
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
         },
       },
       dataCollection: {},
@@ -198,18 +198,18 @@ export default {
             value: "email",
           },
           {
-            text: 'Country',
-            value: 'location.country'
-          }
+            text: "Country",
+            value: "location.country",
+          },
         ],
         users: [],
       },
     };
   },
-  mounted() {
+  async mounted() {
     this.fillData();
     axios
-      .getRandomUsers(10)
+      .getRandomUsers(15)
       .then((response) => (this.randomUsersData.users = response.data.results))
       .catch((error) => console.log(error))
       .then(() => (this.loading = false));

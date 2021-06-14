@@ -4,55 +4,35 @@
     class="sidebar-nav d-flex flex-column justify-content-between"
     :class="{ open: toggled }"
   >
-    <nav v-show="toggled">
+    <nav v-show="toggled" class="nav flex-column">
       <header class="sidebar-brand">
         <span><i class="bi bi-bootstrap"></i>&nbsp;Dashboard</span>
       </header>
       <div class="mb-5">
         <Sidebar-Header title="Theme" />
-        <ul class="nav-group">
-          <Sidebar-Item path="/colors" icon="bi-droplet" name="Colors" />
-          <Sidebar-Item path="/" icon="bi-pen" name="Typography" />
-        </ul>
+        <Sidebar-Item path="/" icon="bi-house-door" name="Home" />
+        <Sidebar-Item path="/colors" icon="bi-droplet" name="Colors" />
+        <Sidebar-Item path="/typography" icon="bi-pen" name="Typography" />
       </div>
       <div class="mb-5">
         <Sidebar-Header title="Components" />
-        <ul class="nav-group">
-          <li class="nav-item pb-2">
-            <Sidebar-Dropdown
-              target="forms"
-              name="Forms"
-              icon="bi-card-checklist"
-            />
-            <div class="collapse" id="forms">
-              <Sidebar-Item path="/" name="Overview" />
-              <Sidebar-Item path="/" name="Form Control" />
-              <Sidebar-Item path="/" name="Types &amp; Layouts" />
-              <Sidebar-Item path="/" name="Validation" />
-            </div>
-          </li>
-          <li class="nav-item pb-2">
-            <Sidebar-Dropdown
-              target="buttons"
-              name="Buttons"
-              icon="bi-menu-button"
-            />
-            <div class="collapse" id="buttons">
-              <Sidebar-Item path="/" name="Overview" />
-              <Sidebar-Item path="/" name="Buttons" />
-              <Sidebar-Item path="/" name="Button Groups" />
-              <Sidebar-Item path="/" name="Dropdowns" />
-            </div>
-          </li>
-        </ul>
+        <Sidebar-Dropdown
+          target="forms"
+          name="Forms"
+          icon="bi-card-checklist"
+        />
+        <div class="collapse" id="forms">
+          <Sidebar-Item path="/" name="Overview"/>
+          <Sidebar-Item path="/" name="Form Control" />
+          <Sidebar-Item path="/" name="Types &amp; Layouts" />
+          <Sidebar-Item path="/" name="Validation" />
+        </div>
       </div>
       <div class="mb-5">
         <Sidebar-Header title="External Links" />
-        <ul class="nav-group">
-          <Sidebar-Item path="/" icon="bi-facebook" name="Facebook" />
-          <Sidebar-Item path="/" icon="bi-twitter" name="Twitter" />
-          <Sidebar-Item path="/" icon="bi-linkedin" name="LinkedIn" />
-        </ul>
+        <Sidebar-Item path="/" icon="bi-facebook" name="Facebook" />
+        <Sidebar-Item path="/" icon="bi-twitter" name="Twitter" />
+        <Sidebar-Item path="/" icon="bi-linkedin" name="LinkedIn" />
       </div>
     </nav>
     <div
@@ -80,7 +60,7 @@ export default {
     "Sidebar-Header": sidebarHeader,
     "Sidebar-Dropdown": sidebarDropdown,
   },
-  data: function() {
+  data: function () {
     return {
       toggle: this.toggled,
       dropdownBtnClass: "d-flex justify-content-between",
@@ -90,7 +70,7 @@ export default {
     toggled: Boolean,
   },
   methods: {
-    toggleSidebar: function() {
+    toggleSidebar: function () {
       this.$emit("toggle");
     },
   },
