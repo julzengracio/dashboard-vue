@@ -16,7 +16,9 @@
       </div>
       <div class="mb-5">
         <Sidebar-Header title="Components" />
-        <Sidebar-Dropdown
+        <Sidebar-Item path="/buttons" icon="bi-menu-button-wide-fill" name="Buttons" />
+        <!-- CODE BELOW IS FOR DROPDOWN STYLE NAV -->
+        <!-- <Sidebar-Dropdown
           target="forms"
           name="Forms"
           icon="bi-card-checklist"
@@ -26,7 +28,7 @@
           <Sidebar-Item path="/" name="Form Control" />
           <Sidebar-Item path="/" name="Types &amp; Layouts" />
           <Sidebar-Item path="/" name="Validation" />
-        </div>
+        </div> -->
       </div>
       <div class="mb-5">
         <Sidebar-Header title="External Links" />
@@ -51,14 +53,14 @@
 <script>
 import sidebarItem from "./Sidebar-Item";
 import sidebarHeader from "./Sidebar-Header";
-import sidebarDropdown from "./Sidebar-Dropdown";
+// import sidebarDropdown from "./Sidebar-Dropdown";
 
 export default {
   name: "Sidebar",
   components: {
     "Sidebar-Item": sidebarItem,
     "Sidebar-Header": sidebarHeader,
-    "Sidebar-Dropdown": sidebarDropdown,
+    // "Sidebar-Dropdown": sidebarDropdown,
   },
   data: function () {
     return {

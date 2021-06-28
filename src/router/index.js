@@ -4,7 +4,8 @@ import VueRouter from "vue-router";
 // Components
 import Home from "../views/Dashboard.vue";
 import Colors from "../views/Colors.vue";
-import Typography from "../views/Typography.vue"
+import Typography from "../views/Typography.vue";
+import Buttons from "../views/Buttons.vue";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,11 @@ const routes = [
     path: "/typography",
     name: "Typography",
     component: Typography
+  },
+  {
+    path: "/buttons",
+    name: "Buttons",
+    component: Buttons
   }
 ];
 

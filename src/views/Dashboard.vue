@@ -1,158 +1,149 @@
 <template>
-  <div class="home">
-    <header>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page">Home</li>
-        </ol>
-      </nav>
-    </header>
-    <main class="mt-5">
-      <div class="row">
-        <div class="col-12 col-lg">
-          <div class="card bg-primary bg-gradient text-white">
-            <div class="card-body">
-              <h2>{{ getRandomInt() }}</h2>
-              <p>Group 1</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg">
-          <div class="card bg-warning bg-gradient text-white">
-            <div class="card-body">
-              <h2>{{ getRandomInt() }}</h2>
-              <p>Group 2</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg">
-          <div class="card bg-info bg-gradient text-white">
-            <div class="card-body">
-              <h2>{{ getRandomInt() }}</h2>
-              <p>Group 3</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg">
-          <div class="card bg-success bg-gradient text-white">
-            <div class="card-body">
-              <h2>{{ getRandomInt() }}</h2>
-              <p>Group 4</p>
-            </div>
+  <main class="home mt-5">
+    <div class="row">
+      <div class="col-12 col-lg">
+        <div class="card bg-primary bg-gradient text-white">
+          <div class="card-body">
+            <h2>{{ getRandomInt() }}</h2>
+            <p>Group 1</p>
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <line-chart
-                :chart-data="dataCollection"
-                :height="chartHeight"
-                :options="chartOptions"
-              ></line-chart>
-            </div>
+      <div class="col-12 col-lg">
+        <div class="card bg-warning bg-gradient text-white">
+          <div class="card-body">
+            <h2>{{ getRandomInt() }}</h2>
+            <p>Group 2</p>
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col-12 col-lg">
-          <div class="card">
-            <div class="card-header bg-facebook">
-              <i class="bi bi-facebook" style="font-size: 4em"></i>
-            </div>
-            <div class="card-body text-center">
-              <div class="row">
-                <div class="col">
-                  <div>
-                    {{ getRandomInt() }}
-                    <p>Friends</p>
-                  </div>
-                </div>
-                <div class="col">
-                  <div>
-                    {{ getRandomInt() }}
-                    <p>Feeds</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="col-12 col-lg">
+        <div class="card bg-info bg-gradient text-white">
+          <div class="card-body">
+            <h2>{{ getRandomInt() }}</h2>
+            <p>Group 3</p>
           </div>
         </div>
-        <div class="col-12 col-lg">
-          <div class="card">
-            <div class="card-header bg-twitter">
-              <i class="bi bi-twitter" style="font-size: 4em"></i>
-            </div>
-            <div class="card-body text-center">
-              <div class="row">
-                <div class="col">
-                  <div>
-                    {{ getRandomInt() }}
-                    <p>Followers</p>
-                  </div>
-                </div>
-                <div class="col">
-                  <div>
-                    {{ getRandomInt() }}
-                    <p>Tweets</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      </div>
+      <div class="col-12 col-lg">
+        <div class="card bg-success bg-gradient text-white">
+          <div class="card-body">
+            <h2>{{ getRandomInt() }}</h2>
+            <p>Group 4</p>
           </div>
         </div>
-        <div class="col-12 col-lg">
-          <div class="card">
-            <div class="card-header bg-linkedin">
-              <i class="bi bi-linkedin" style="font-size: 4em"></i>
-            </div>
-            <div class="card-body text-center">
-              <div class="row">
-                <div class="col">
-                  <div>
-                    {{ getRandomInt() }}
-                    <p>Connections</p>
-                  </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <line-chart
+              :chart-data="dataCollection"
+              :height="chartHeight"
+              :options="chartOptions"
+            ></line-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12 col-lg">
+        <div class="card">
+          <div class="card-header bg-facebook">
+            <i class="bi bi-facebook" style="font-size: 4em"></i>
+          </div>
+          <div class="card-body text-center">
+            <div class="row">
+              <div class="col">
+                <div>
+                  {{ getRandomInt() }}
+                  <p>Friends</p>
                 </div>
-                <div class="col">
-                  <div>
-                    {{ getRandomInt() }}
-                    <p>Feeds</p>
-                  </div>
+              </div>
+              <div class="col">
+                <div>
+                  {{ getRandomInt() }}
+                  <p>Feeds</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col-12" id="wrapper">
-          <v-app>
-            <v-data-table
-              :headers="randomUsersData.headers"
-              :items="randomUsersData.users"
-              item-key="user"
-              :items-per-page="5"
-              :loading="loading"
-              loading-text="Fetching Data... Please wait"
-              class="elevation-1"
-            >
-              <template v-slot:[`item.picture`]="{ item }">
-                <v-img
-                  :src="item.picture.thumbnail"
-                  max-height="30"
-                  max-width="30"
-                  class="rounded-circle"
-                >
-                </v-img>
-              </template>
-            </v-data-table>
-          </v-app>
+      <div class="col-12 col-lg">
+        <div class="card">
+          <div class="card-header bg-twitter">
+            <i class="bi bi-twitter" style="font-size: 4em"></i>
+          </div>
+          <div class="card-body text-center">
+            <div class="row">
+              <div class="col">
+                <div>
+                  {{ getRandomInt() }}
+                  <p>Followers</p>
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  {{ getRandomInt() }}
+                  <p>Tweets</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </main>
-  </div>
+      <div class="col-12 col-lg">
+        <div class="card">
+          <div class="card-header bg-linkedin">
+            <i class="bi bi-linkedin" style="font-size: 4em"></i>
+          </div>
+          <div class="card-body text-center">
+            <div class="row">
+              <div class="col">
+                <div>
+                  {{ getRandomInt() }}
+                  <p>Connections</p>
+                </div>
+              </div>
+              <div class="col">
+                <div>
+                  {{ getRandomInt() }}
+                  <p>Feeds</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12" id="wrapper">
+        <v-app>
+          <v-data-table
+            :headers="randomUsersData.headers"
+            :items="randomUsersData.users"
+            item-key="user"
+            :items-per-page="5"
+            :loading="loading"
+            loading-text="Fetching Data... Please wait"
+            class="elevation-1"
+          >
+            <template v-slot:[`item.picture`]="{ item }">
+              <v-img
+                :src="item.picture.thumbnail"
+                max-height="30"
+                max-width="30"
+                class="rounded-circle"
+              >
+              </v-img>
+            </template>
+          </v-data-table>
+        </v-app>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>

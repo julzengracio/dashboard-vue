@@ -32,7 +32,7 @@
           </div>
         </nav>
       </header>
-      <main class="container-fluid mt-3 px-4">
+      <main class="container mt-3 px-4">
         <router-view />
       </main>
       <footer class="container-fluid border-top mt-5">
